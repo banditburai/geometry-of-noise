@@ -58,17 +58,18 @@
 
     <!-- App container -->
     <div id="stardust-app">
-        <div data-signals:n__ifmissing="0" data-signals:doubled__ifmissing="0" class="max-w-2xl mx-auto p-8">
+        <div data-signals:n__ifmissing="8" data-signals:doubled__ifmissing="16" class="max-w-2xl mx-auto p-8">
       <h1 class="text-3xl font-bold mb-2">Geometry of Noise</h1>
-      <h2 class="text-xl text-gray-600 mb-6">Pipeline spike</h2>
+      <h2 class="text-xl text-gray-600 mb-6">Plot pipeline smoke test</h2>
       <p class="mb-4">
-Infrastructure check before notebook content. The value below is computed by a Python ``@cell`` running in Pyodide.      </p>
-      <div class="p-4 border rounded bg-gray-50">
-        <input type="number" data-bind="n" data-signals:n__ifmissing="0" class="border px-2 py-1 rounded">
+Two cells run in Pyodide: ``doubled`` (scalar) and ``smoke_plot`` (matplotlib Figure). Change ``n`` to drive both.      </p>
+      <div class="p-4 border rounded bg-gray-50 mb-4">
+        <input type="number" data-bind="n" data-signals:n__ifmissing="8" class="border px-2 py-1 rounded">
         <div class="mt-2">
-doubled =           <div data-text="$doubled" class="inline font-mono"></div>
+doubled =           <div data-text="$doubled" class="inline font-mono">16</div>
         </div>
       </div>
+      <div id="output-content-smoke_plot" class="p-4 border rounded bg-white min-h-[300px]"></div>
     </div>
     </div>
 
