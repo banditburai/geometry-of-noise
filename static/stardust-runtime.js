@@ -157,7 +157,7 @@
         await pyodide.loadPackage(["micropip", "ssl", "anyio", "msgspec", "pyodide-http", "jedi", "parso", "pygments", "docutils"]);
 
         // Install starhtml with WASM-compatible deps only (skip server deps like uvicorn/fastlite)
-        const starhtmlWheel = window.location.origin + '/static/starhtml-0.6.0-py3-none-any.whl';
+        const starhtmlWheel = new URL('static/starhtml-0.6.0-py3-none-any.whl', document.baseURI).href;
         await pyodide.runPythonAsync(`
 import micropip
 import sys
@@ -204,7 +204,7 @@ await micropip.install('${starhtmlWheel}', deps=False)
         await pyodide.runPythonAsync(`await micropip.install('marimo', deps=False)`);
 
         // Install starimo from local wheel (not on PyPI)
-        const starimoWheel = window.location.origin + '/static/starimo-0.1.0-py3-none-any.whl';
+        const starimoWheel = new URL('static/starimo-0.1.0-py3-none-any.whl', document.baseURI).href;
         await pyodide.runPythonAsync(`await micropip.install('${starimoWheel}', deps=False)`);
 
         updateLoadingStatus('Loading application...');
