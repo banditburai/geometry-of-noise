@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stardust App</title>
+    <base href="/geometry-of-noise/">
+
+    <!-- Datastar -->
+    <script type="module" src="./static/datastar.js"></script>
+
+    <!-- Pyodide -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.29.1/full/pyodide.js"></script>
+
+    <style>:not(:defined){visibility:hidden} [data-icon-sh]{display:inline-block} [data-icon-sh].icon-fill :is(path,circle,rect,polygon,ellipse,line,polyline,g){fill:currentColor}</style>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.3.0/dist/iconify-icon.min.js" type="module"></script>
+    <script>{const s=new CSSStyleSheet();s.replaceSync(":host(.icon-fill) :is(path,circle,rect,polygon,ellipse,line,polyline,g){fill:currentColor}");const a=e=>{const r=e.shadowRoot;if(r&&!r.adoptedStyleSheets.includes(s))r.adoptedStyleSheets=[...r.adoptedStyleSheets,s]};customElements.whenDefined('iconify-icon').then(()=>{document.querySelectorAll('iconify-icon').forEach(a);new MutationObserver(ms=>{for(const m of ms)for(const n of m.addedNodes)if(n.nodeType===1){if(n.localName==='iconify-icon')a(n);n.querySelectorAll&&n.querySelectorAll('iconify-icon').forEach(a)}}).observe(document.documentElement,{childList:true,subtree:true})})}</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        #stardust-loading {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        #stardust-loading .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #stardust-app {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading state -->
+    <div id="stardust-loading">
+        <div class="spinner"></div>
+        <p id="stardust-status">Initializing...</p>
+    </div>
+
+    <!-- App container -->
+    <div id="stardust-app">
+        <div data-signals:n__ifmissing="0" data-signals:doubled__ifmissing="0" class="max-w-2xl mx-auto p-8">
+      <h1 class="text-3xl font-bold mb-2">Geometry of Noise</h1>
+      <h2 class="text-xl text-gray-600 mb-6">Pipeline spike</h2>
+      <p class="mb-4">
+Infrastructure check before notebook content. The value below is computed by a Python ``@cell`` running in Pyodide.      </p>
+      <div class="p-4 border rounded bg-gray-50">
+        <input type="number" data-bind="n" data-signals:n__ifmissing="0" class="border px-2 py-1 rounded">
+        <div class="mt-2">
+doubled =           <div data-text="$doubled" class="inline font-mono"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Stardust Runtime -->
+    <script src="./static/stardust-runtime.js"></script>
+</body>
+</html>
