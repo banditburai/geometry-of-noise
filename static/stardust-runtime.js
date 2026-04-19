@@ -221,10 +221,6 @@ Verifies:
 
 Once green, this scaffold becomes the home for the real notebook cells.
 """
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-import numpy as np
 from starhtml import Div, H1, H2, Input, P, Script, star_app
 from starhtml.datastar import Signal
 from starimo import cell
@@ -238,7 +234,11 @@ def doubled(n: int=0):
 
 @cell
 def smoke_plot(n: int=8):
-    """One-off smoke test: returns a Figure that should render as an inline PNG."""
+    """Smoke test: returns a Figure that should render as an inline PNG."""
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    import numpy as np
     rng = np.random.default_rng(0)
     theta = np.linspace(0, 2 * np.pi, max(int(n), 4) * 16)
     r = 1.0 + 0.05 * rng.standard_normal(theta.shape)
